@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { getTopRecipes } = require('../controllers/recipies'); // Import controller
+const { getTopRecipes } = require('../controllers/recipies'); 
 
 // Define routes
-router.get('/', getTopRecipes); // Get top 20 recipes
+router.get('/', getTopRecipes);
 
 module.exports = router;
