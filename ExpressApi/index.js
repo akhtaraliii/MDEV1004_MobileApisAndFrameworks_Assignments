@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const recipeRoutes = require('./src/routes/recipies'); // Import routes
+const recipeRoutes = require('./src/routes/recipeRoute'); // Import routes
 
 dotenv.config();
 
