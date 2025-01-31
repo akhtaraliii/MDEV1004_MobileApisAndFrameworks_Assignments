@@ -1,3 +1,11 @@
+/**
+ * Student: Akhtar Ali
+ * StudentID: 200568437
+ * Student: Harshdeep Singh
+ * StudentID: 200568437
+ * Date: 30th Jan 2025
+ */
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Recipe = require('./src/models/recipeSchema');
@@ -44,7 +52,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Butter Chicken (Murgh Makhani)",
       ingredients: ["Chicken", "Butter", "Cream", "Tomatoes", "Onions", "Garlic", "Ginger","Garam Masala"],
       cookingTime: "50 minutes",
-      diﬃculty: "Hard",
+      difficulty: "Hard",
       cuisine: "Indian",
       description: "A rich and creamy tomato-based curry with tender chicken, best served with naan or rice.",
       photoLink: "https://images.app.goo.gl/7VqdZJTaD3wc1Fii7",
@@ -54,7 +62,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Paneer Tikka",
       ingredients: ["Paneer", "Yogurt", "Bell Peppers", "Onions", "Tandoori Spices"],
       cookingTime: "40 minutes",
-      diﬃculty: "Easy",
+      difficulty: "Easy",
       cuisine: "Indian",
       description: "Marinated paneer cubes grilled to perfection, served with mint chutney.",
       photoLink: "https://images.app.goo.gl/qiCwbMDotFgFzSs7A",
@@ -65,7 +73,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       ingredients: ["Lentils (Toor Dal)", "Tomatoes", "Garlic", "Cumin", "Mustard Seeds",
       "Ghee"],
       cookingTime: "30 minutes",
-      diﬃculty: "Easy",
+      difficulty: "Easy",
       cuisine: "Indian",
       description: "A comforting lentil dish with a flavorful tempering of spices and garlic.",
       photoLink: "https://images.app.goo.gl/3LJxHrBravQHh4bo9",
@@ -75,7 +83,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Chole (Chickpea Curry)",
       ingredients: ["Chickpeas", "Onions", "Tomatoes", "Garlic", "Ginger", "Chole Masala"],
       cookingTime: "45 minutes",
-      diﬃculty: "Medium",
+      difficulty: "Medium",
       cuisine: "Indian",
       description: "A hearty and spicy chickpea curry, often served with bhature or rice.",
       photoLink: "https://images.app.goo.gl/htQbL4y2Eza9JB4C7",
@@ -85,7 +93,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Aloo Paratha",
       ingredients: ["Wheat Flour", "Potatoes", "Spices", "Butter", "Green Chilies"],
       cookingTime: "25 minutes",
-      diﬃculty: "Easy",
+      difficulty: "Easy",
       cuisine: "Indian",
       description: "A stuﬀed Indian flatbread with a spicy mashed potato filling, served with yogurt or pickle.",
       photoLink: "https://images.app.goo.gl/qGEmiRc79gURZUmb9",
@@ -95,7 +103,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Masala Dosa",
       ingredients: ["Rice", "Urad Dal", "Potatoes", "Mustard Seeds", "Curry Leaves"],
       cookingTime: "1 hour",
-      diﬃculty: "Hard",
+      difficulty: "Hard",
       cuisine: "South Indian",
       description: "A crispy fermented rice pancake filled with spiced mashed potatoes, served with chutney and sambar.",
       photoLink: "https://images.app.goo.gl/oXSPAKaaeD55MJF29",
@@ -105,7 +113,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Matar Paneer",
       ingredients: ["Paneer", "Peas", "Tomatoes", "Onions", "Garam Masala", "Cream"],
       cookingTime: "40 minutes",
-      diﬃculty: "Medium",
+      difficulty: "Medium",
       cuisine: "Indian",
       description: "A delicious North Indian curry with paneer cubes and green peas in a tomato-based gravy.",
       photoLink: "https://images.app.goo.gl/pL8d8huhmPbWDDta9",
@@ -115,7 +123,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Samosa",
       ingredients: ["Flour", "Potatoes", "Peas", "Spices", "Oil"],
       cookingTime: "50 minutes",
-      diﬃculty: "Medium",
+      difficulty: "Medium",
       cuisine: "Indian",
       description: "Crispy fried pastries filled with a spicy potato and pea mixture, served with chutney.",
       photoLink: "https://images.app.goo.gl/cUPDqbP7set2EPMA8",
@@ -125,7 +133,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Rajma (Kidney Bean Curry)",
       ingredients: ["Kidney Beans", "Onions", "Tomatoes", "Garlic", "Ginger", "Spices"],
       cookingTime: "50 minutes",
-      diﬃculty: "Medium",
+      difficulty: "Medium",
       cuisine: "Indian",
       description: "A delicious and nutritious curry made with kidney beans in a thick, spicy gravy.",
       photoLink: "https://images.app.goo.gl/Kr5NaWmGybrwh7iJ7",
@@ -135,7 +143,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       recipeName: "Bhindi Masala (Okra Stir Fry)",
       ingredients: ["Okra", "Onions", "Tomatoes", "Garlic", "Spices"],
       cookingTime: "30 minutes",
-      diﬃculty: "Easy",
+      difficulty: "Easy",
       cuisine: "Indian",
       description: "A simple and flavorful stir-fry made with okra, onions, and aromatic spices.",
       photoLink: "https://images.app.goo.gl/kVocYqBubYT1Dc597",
