@@ -1,0 +1,33 @@
+[
+    {
+      "recipeName": "Spaghetti Bolognese",
+      "ingredients": ["spaghetti", "ground beef", "tomato sauce", "garlic", "onion"],
+      "cookingTime": "45 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "description": "A classic Italian pasta dish...",
+      "photoLink": "http://example.com/spaghetti.jpg",
+      "averageRating": 4.5
+    },
+    {
+      "recipeName": "Chicken Curry",
+      "ingredients": ["chicken", "curry powder", "onion", "garlic", "tomato"],
+      "cookingTime": "60 minutes",
+      "difficulty": "Hard",
+      "cuisine": "Indian",
+      "description": "A rich and spicy curry...",
+      "photoLink": "http://example.com/chickencurry.jpg",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Vegetable Stir-fry",
+      "ingredients": ["broccoli", "carrot", "soy sauce", "ginger", "garlic"],
+      "cookingTime": "30 minutes",
+      "difficulty": "Easy",
+      "cuisine": "Asian",
+      "description": "A healthy vegetable stir-fry...",
+      "photoLink": "http://example.com/veggiestirfry.jpg",
+      "averageRating": 4.2
+    }
+  ]
+  
