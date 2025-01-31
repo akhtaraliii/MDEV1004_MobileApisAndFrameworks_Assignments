@@ -19,6 +19,16 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       description: "A classic Italian pasta dish...",
       photoLink: "https://images.app.goo.gl/PuY26PxJjipG3TRJA",
       averageRating: 4.5
+    },
+    {
+      recipeName: "Chicken Curry",
+      ingredients: ["chicken", "curry powder", "onion", "garlic", "tomato"],
+      cookingTime: "60 minutes",
+      difficulty: "Hard",
+      cuisine: "Indian",
+      description: "A rich and spicy curry...",
+      photoLink: "https://images.app.goo.gl/c8o77yM3R8qMRDuw5",
+      averageRating: 4.7
     }
   ];
 
