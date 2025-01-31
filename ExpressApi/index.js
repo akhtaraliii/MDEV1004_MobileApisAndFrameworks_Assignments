@@ -12,6 +12,7 @@ const app = express();
 // Middleware to parse JSON bodies
 app.use(bodyParser.json()); 
 
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
