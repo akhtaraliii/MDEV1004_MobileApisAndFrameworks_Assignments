@@ -3,7 +3,7 @@ const path = require('path');
 
 
 const getTopRecipes = (req, res) => {
-  const dataPath = path.join(__dirname, '../../data/recipes.json');
+  const dataPath = path.join(__dirname, '../../data/recipies.json');
   
   fs.readFile(dataPath, 'utf8', (err, data) => {
     if (err) {
