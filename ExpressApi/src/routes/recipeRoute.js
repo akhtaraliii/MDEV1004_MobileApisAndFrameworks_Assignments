@@ -6,11 +6,13 @@
  * Date: 30th Jan 2025
  */
 
-const express = require('express');
-const router = express.Router();
-const { getTopRecipes } = require('../controllers/recipes'); 
+const express = require('express'); // Import Express framework
+const router = express.Router(); // Create an instance of Express Router
+const { getTopRecipes } = require('../controllers/recipes'); // Import the controller function
 
-// Define routes
+
+// Handler for fetching top recipes.
 router.get('/', getTopRecipes);
 
+// Export the router to be used in the main application
 module.exports = router;
