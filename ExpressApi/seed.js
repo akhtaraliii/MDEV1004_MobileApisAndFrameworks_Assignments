@@ -6,16 +6,22 @@
  * Date: 30th Jan 2025
  */
 
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const Recipe = require('./src/models/recipeSchema');
+const mongoose = require('mongoose'); // Import Mongoose for database connection
+const dotenv = require('dotenv'); // Import dotenv to load environment variables
+const Recipe = require('./src/models/recipeSchema'); // Import Recipe model
 
 
 dotenv.config();
+/**
+ * Connects to MongoDB using the provided connection string.
+ * Logs a success message on successful connection or an error message on failure.
+ */
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('Error connecting to MongoDB:', err));
+
+// Recipe data to be inserted into the database
 
   const recipes = [
     {
@@ -252,6 +258,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     }
   ];
 
+//Imports sample recipe data into the database.
   const importData = async () => {
     try {
       await Recipe.deleteMany(); // Clear existing data
@@ -268,7 +275,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
       mongoose.connection.close();
     } catch (error) {
       console.error("Error:", error);
-      mongoose.connection.close();
+      mongoose.connection.close(); // Close database connection on error
     }
   };
   
