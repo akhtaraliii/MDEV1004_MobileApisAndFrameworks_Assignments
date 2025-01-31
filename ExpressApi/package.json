@@ -1,0 +1,19 @@
+{
+  "name": "expressapi",
+  "version": "1.0.0",
+  "description": "This the assignment for the mobile apis and frameworks and it has receipes init ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhtaraliii/MDEV1004_MobileApisAndFrameworks_Assignments.git"
+  },
+  "author": "Akhtar And Harshdeep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akhtaraliii/MDEV1004_MobileApisAndFrameworks_Assignments/issues"
+  },
+  "homepage": "https://github.com/akhtaraliii/MDEV1004_MobileApisAndFrameworks_Assignments#readme"
+}
