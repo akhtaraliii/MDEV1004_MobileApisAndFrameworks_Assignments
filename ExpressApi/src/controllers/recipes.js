@@ -11,7 +11,7 @@ const getTopRecipes = (req, res) => {
     }
     
     const recipes = JSON.parse(data);
-    res.json(recipes.slice(0, 21));
+    res.json(recipes);
   });
 };
 
