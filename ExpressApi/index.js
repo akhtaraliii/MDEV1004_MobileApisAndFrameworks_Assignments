@@ -20,12 +20,17 @@ const app = express();
 app.use(bodyParser.json()); 
 
 
-// MongoDB connection
+/**
+ * Connect to MongoDB database
+ * Logs success or failure message
+ */
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('Error connecting to MongoDB:', err));
 
-// Use routes
+/**
+ * GET all recipes
+ */
 app.use('/recipes', recipeRoutes);
 
 const PORT = process.env.PORT || 3000;
