@@ -131,6 +131,106 @@
     "photoLink": "https://images.app.goo.gl/kVocYqBubYT1Dc597",
     "averageRating": 4.5
     
+    },
+    {
+      "recipeName": "Palak Paneer",
+      "ingredients": ["Spinach", "Paneer", "Onions", "Tomatoes", "Garlic", "Cream"],
+      "cookingTime": "40 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "A creamy spinach curry with soft paneer cubes, best paired with naan or roti.",
+      "photoLink": "https://images.app.goo.gl/t4UfPrbZad4tMqBu8",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Pani Puri",
+      "ingredients": ["Semolina", "Flour", "Potatoes", "Chickpeas", "Tamarind", "Mint"],
+      "cookingTime": "45 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "Crispy, hollow puris filled with spicy and tangy water, potatoes, and chickpeas.",
+      "photoLink": "https://images.app.goo.gl/SSkGRD5xuoTKJVJF7",
+      "averageRating": 4.9
+    },
+    {
+      "recipeName": "Baingan Bharta (Smoked Eggplant Curry)",
+      "ingredients": ["Eggplant", "Tomatoes", "Onions", "Garlic", "Mustard Seeds", "Spices"],
+      "cookingTime": "35 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "A smoky-flavored mashed eggplant dish cooked with spices and served with roti.",
+      "photoLink": "https://images.app.goo.gl/36xsCsAxFEhWHucVA",
+      "averageRating": 4.6
+    },
+    {
+      "recipeName": "Ras Malai",
+      "ingredients": ["Paneer (Chhena)", "Milk", "Sugar", "Saffron", "Cardamom"],
+      "cookingTime": "60 minutes",
+      "difficulty": "Hard",
+      "cuisine": "Indian",
+      "description": "Soft paneer dumplings soaked in sweetened saffron milk.",
+      "photoLink": "https://images.app.goo.gl/5MqR5rTbg7YrT46s6",
+      "averageRating": 4.9
+    },
+    {
+      "recipeName": "Gajar Ka Halwa (Carrot Pudding)",
+      "ingredients": ["Carrots", "Milk", "Sugar", "Ghee", "Cardamom", "Nuts"],
+      "cookingTime": "50 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "A rich and sweet carrot-based dessert, garnished with dry fruits.",
+      "photoLink": "https://images.app.goo.gl/oyHxT534vtreGhYLA",
+      "averageRating": 4.8
+    },
+    {
+      "recipeName": "Dhokla",
+      "ingredients": ["Gram Flour (Besan)", "Yogurt", "Turmeric", "Mustard Seeds", "Green Chilies"],
+      "cookingTime": "30 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Gujarati",
+      "description": "A soft, steamed savory cake made from gram flour, perfect for breakfast or snacks.",
+      "photoLink": "https://images.app.goo.gl/KjMtWzr5C3g7ZRji7",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Pav Bhaji",
+      "ingredients": ["Potatoes", "Tomatoes", "Onions", "Capsicum", "Butter", "Pav Bhaji Masala", "Pav (Bread Rolls)"],
+      "cookingTime": "40 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Maharashtrian",
+      "description": "A spicy and buttery vegetable mash served with toasted pav bread.",
+      "photoLink": "https://images.app.goo.gl/qXfJJr99jFQttkuZ7",
+      "averageRating": 4.8
+    },
+    {
+      "recipeName": "Chicken Korma",
+      "ingredients": ["Chicken", "Yogurt", "Onions", "Cashew Paste", "Garam Masala", "Cream"],
+      "cookingTime": "50 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Mughlai",
+      "description": "A rich and creamy Mughlai-style chicken curry cooked with yogurt and cashews.",
+      "photoLink": "https://images.app.goo.gl/CWSePBythYtCoSfS7",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Lassi",
+      "ingredients": ["Yogurt", "Sugar", "Cardamom", "Saffron", "Rose Water"],
+      "cookingTime": "10 minutes",
+      "difficulty": "Easy",
+      "cuisine": "Punjabi",
+      "description": "A refreshing and creamy yogurt-based drink, available in sweet or salty versions.",
+      "photoLink": "https://images.app.goo.gl/MjDVtxgJRyWbnRsM7",
+      "averageRating": 4.9
+    },
+    {
+      "recipeName": "Peda (Milk Fudge)",
+      "ingredients": ["Milk", "Sugar", "Cardamom", "Saffron", "Nuts"],
+      "cookingTime": "45 minutes",
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "A soft and rich milk-based sweet flavored with cardamom and saffron.",
+      "photoLink": "https://images.app.goo.gl/aTSEoNbZtvnTpH4z8",
+      "averageRating": 4.7
     }
 ]
 
