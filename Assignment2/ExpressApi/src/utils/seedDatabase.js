@@ -8,7 +8,7 @@
 
 const mongoose = require('mongoose'); // Import Mongoose for database connection
 const dotenv = require('dotenv'); // Import dotenv to load environment variables
-const Recipe = require('./src/models/recipeSchema'); // Import Recipe model
+const Recipe = require('../models/recipeSchema'); // Import Recipe model
 
 
 dotenv.config();
