@@ -25,3 +25,14 @@ require('fs').watch(path.dirname(recipesFilePath), async (eventType, filename) =
         }
     }
 });
+
+// Read recipes from JSON file
+async function readRecipesFile() {
+    try {
+        const data = await fs.readFile(recipesFilePath, 'utf8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error('Error reading recipes file:', error);
+        return [];
+    }
+}
