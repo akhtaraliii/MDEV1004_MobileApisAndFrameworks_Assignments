@@ -10,30 +10,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const recipeRoutes = require('./src/routes/recipeRoute'); // Import routes
+const recipeRoutes = require('./src/routes/recipeRoutes');
+const authRoutes = require('./src/routes/authRoutes');
+const Recipe = require('./src/models/Recipe');
+const fs = require('fs').promises;
+const path = require('path');
 
+// Load environment variables
 dotenv.config();
-
-const app = express();
-
-// Middleware to parse JSON bodies
-app.use(bodyParser.json()); 
-
-
-/**
- * Connect to MongoDB database
- * Logs success or failure message
- */
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log('Error connecting to MongoDB:', err));
-
-/**
- * GET all recipes
- */
-app.use('/recipes', recipeRoutes);
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
-});
