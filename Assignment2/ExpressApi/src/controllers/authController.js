@@ -94,3 +94,37 @@ exports.loginUser = async(req,res)=>{
         });
     }
 }
+
+exports.logoutUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        // Check if required fields are provided
+        if (!email || !password) {
+            return res.status(400).json({ message: 'Email and password are required for logout' });
+        }
+
+        // Check if user is logged in
+        const loggedInUser = loggedInUsers.get(email);
+        if (!loggedInUser) {
+            return res.status(401).json({ message: 'User is not logged in' });
+        }
+
+        // Verify password before logout
+        const isPasswordValid = await loggedInUser.isValidPassword(password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid password' });
+        }
+
+        // Remove user from logged in users
+        loggedInUsers.delete(email);
+        
+        res.status(200).json({ message: 'User logged out successfully' });
+    } catch (error) {
+        console.error('Logout error:', error);
+        res.status(500).json({
+            message: 'Internal server error during logout',
+            error: error.message
+        });
+    }
+};
