@@ -6,13 +6,23 @@
  * Date: 30th Jan 2025
  */
 
-const express = require('express'); // Import Express framework
-const router = express.Router(); // Create an instance of Express Router
-const { getTopRecipes } = require('../controllers/recipes'); // Import the controller function
+const express = require('express');
+const router = express.Router();
+const recipeController = require('../controllers/recipeController');
 
+// Get all recipes
+router.get('/', recipeController.getAllRecipes);
 
-// Handler for fetching top recipes.
-router.get('/', getTopRecipes);
+// Get recipe by ID
+router.get('/:id', recipeController.getRecipeById);
 
-// Export the router to be used in the main application
+// Create new recipe
+router.post('/', recipeController.createRecipe);
+
+// Update recipe
+router.put('/:id', recipeController.updateRecipe);
+
+// Delete recipe
+router.delete('/:id', recipeController.deleteRecipe);
+
 module.exports = router;
