@@ -8,7 +8,7 @@
  */
 
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 // Track logged in users
 const loggedInUsers = new Map();
