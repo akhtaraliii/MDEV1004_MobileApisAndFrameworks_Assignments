@@ -28,3 +28,22 @@ app.use(bodyParser.json());
 // Routes
 app.use('/recipes', recipeRoutes);
 app.use('/auth', authRoutes);
+
+// Function to seed the database
+async function seedDatabase() {
+  try {
+      const recipesPath = path.join(__dirname, 'src/data/recipes.json');
+      const recipesData = await fs.readFile(recipesPath, 'utf8');
+      const recipes = JSON.parse(recipesData);
+      
+      // Clear existing recipes
+      await Recipe.deleteMany({});
+      console.log('Cleared existing recipes');
+      
+      // Insert new recipes
+      await Recipe.insertMany(recipes);
+      console.log('Database seeded successfully');
+  } catch (error) {
+      console.error('Error seeding database:', error);
+  }
+}
