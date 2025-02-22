@@ -7,6 +7,7 @@
  */
 
 const mongoose = require('mongoose');
+
 /**
  * Recipe Schema Definition
  * Represents a recipe with name, ingredients, cooking time, difficulty, cuisine, description, photo, and rating
@@ -20,7 +21,8 @@ const recipeSchema = new mongoose.Schema({
   description: { type: String, required: true },
   photoLink: { type: String, required: true }, // URL to recipe image
   averageRating: { type: Number, required: true }
-});
+}, { timestamps: false });
+
 /**
  * Recipe Model
  * returns Mongoose model for interacting with recipes collection
