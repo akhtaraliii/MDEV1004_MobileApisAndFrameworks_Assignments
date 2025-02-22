@@ -26,3 +26,26 @@ exports.getAllRecipes = async (req, res) => {
         });
     }
 };
+
+// Get recipe by ID
+exports.getRecipeById = async (req, res) => {
+  try {
+      const recipe = await Recipe.findById(req.params.id);
+      if (!recipe) {
+          return res.status(404).json({
+              status: 'fail',
+              message: 'Recipe not found'
+          });
+      }
+      res.status(200).json({
+          status: 'success',
+          data: recipe
+      });
+  } catch (error) {
+      res.status(500).json({
+          status: 'error',
+          message: 'Error retrieving recipe',
+          error: error.message
+      });
+  }
+};
