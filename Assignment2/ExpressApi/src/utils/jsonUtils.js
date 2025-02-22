@@ -36,3 +36,21 @@ async function readRecipesFile() {
         return [];
     }
 }
+
+// Write recipes to JSON file and sync with MongoDB
+async function writeRecipesFile(recipes) {
+    try {
+        // Remove timestamps from each recipe
+        const cleanRecipes = recipes.map(recipe => {
+            const { createdAt, updatedAt, ...cleanRecipe } = recipe.toObject ? recipe.toObject() : recipe;
+            return cleanRecipe;
+        });
+        
+        await fs.writeFile(recipesFilePath, JSON.stringify(cleanRecipes, null, 2), 'utf8');
+        
+        // Sync with MongoDB
+        await syncToMongoDB(cleanRecipes);
+    } catch (error) {
+        console.error('Error writing recipes file:', error);
+    }
+}
