@@ -6,23 +6,23 @@
  * Date: 30th Jan 2025
  */
 
-const fs = require('fs');
-const path = require('path');
+const Recipe = require('../models/Recipe');
+const { updateRecipesFile } = require('../utils/jsonUtils');
 
-
-const getTopRecipes = (req, res) => {
-  // Define the path to the recipes data file
-  const dataPath = path.join(__dirname, '../../data/recipies.json');
-  // Read the JSON file asynchronously
-  fs.readFile(dataPath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).json({ message: 'Error reading data file' });
+// Get all recipes
+exports.getAllRecipes = async (req, res) => {
+    try {
+        const recipes = await Recipe.find();
+        res.status(200).json({
+            status: 'success',
+            results: recipes.length,
+            data: recipes
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: 'Error retrieving recipes',
+            error: error.message
+        });
     }
-    // Parse the JSON data from the file
-    const recipes = JSON.parse(data);
-    // Send the parsed recipes as a JSON response
-    res.json(recipes);
-  });
 };
-// Export the function to be used in other parts of the application
-module.exports = { getTopRecipes };
