@@ -62,3 +62,33 @@ fs.watch(path.dirname(recipesPath), async (eventType, filename) => {
         }
     }
 });
+
+// MongoDB connection and server start
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(async () => {
+  console.log('Connected to MongoDB');
+  
+  // Seed database on startup
+  await seedDatabase();
+  
+  // Start server
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}\n`);
+      console.log('API Endpoints:');
+      console.log('  Auth:');
+      console.log('   POST /auth/register - Register new user');
+      console.log('   POST /auth/login    - Login user');
+      console.log('   POST /auth/logout   - Logout user\n');
+      console.log('  Recipes:');
+      console.log('   GET    /recipes     - Get all recipes');
+      console.log('   GET    /recipes/:id - Get recipe by ID');
+      console.log('   POST   /recipes     - Create new recipe');
+      console.log('   PUT    /recipes/:id - Update recipe');
+      console.log('   DELETE /recipes/:id - Delete recipe');
+  });
+}).catch(error => {
+  console.error('Error connecting to MongoDB:', error);
+});
