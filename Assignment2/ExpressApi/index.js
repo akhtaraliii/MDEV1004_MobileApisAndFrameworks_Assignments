@@ -18,3 +18,13 @@ const path = require('path');
 
 // Load environment variables
 dotenv.config();
+
+// Initialize express app
+const app = express();
+
+// Middleware
+app.use(bodyParser.json());
+
+// Routes
+app.use('/recipes', recipeRoutes);
+app.use('/auth', authRoutes);
