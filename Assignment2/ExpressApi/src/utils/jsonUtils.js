@@ -54,3 +54,17 @@ async function writeRecipesFile(recipes) {
         console.error('Error writing recipes file:', error);
     }
 }
+
+// Sync data from JSON to MongoDB
+async function syncToMongoDB(recipes) {
+    try {
+        // Clear existing recipes
+        await Recipe.deleteMany({});
+        
+        // Insert new recipes
+        await Recipe.insertMany(recipes);
+        console.log('Synced recipes to MongoDB successfully');
+    } catch (error) {
+        console.error('Error syncing to MongoDB:', error);
+    }
+}
