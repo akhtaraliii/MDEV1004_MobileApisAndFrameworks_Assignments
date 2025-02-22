@@ -1,5 +1,5 @@
 /**
- * File name : recipeRoutes.js
+ * File name : recipeRoute.js
  * Student: Akhtar Ali
  * StudentID: 200568437
  * Student: Harshdeep Singh

@@ -1,3 +1,12 @@
+/**
+ * File name : User.js
+ * Student: Akhtar Ali
+ * StudentID: 200568437
+ * Student: Harshdeep Singh
+ * StudentID: 200612779
+ * Date: 21 feb 2025
+ */
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 

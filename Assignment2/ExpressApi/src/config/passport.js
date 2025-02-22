@@ -1,3 +1,12 @@
+/**
+ * File name : passport.js
+ * Student: Akhtar Ali
+ * StudentID: 200568437
+ * Student: Harshdeep Singh
+ * StudentID: 200612779
+ * Date: 21 feb 2025
+ */
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
