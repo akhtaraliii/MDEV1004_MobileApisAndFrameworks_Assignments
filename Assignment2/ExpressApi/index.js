@@ -47,3 +47,18 @@ async function seedDatabase() {
       console.error('Error seeding database:', error);
   }
 }
+
+// Watch for changes in recipes.json
+const recipesPath = path.join(__dirname, 'src/data/recipes.json');
+fs.watch(path.dirname(recipesPath), async (eventType, filename) => {
+    if (filename === 'recipes.json' && eventType === 'change') {
+        try {
+            // Wait a short time to ensure file writing is complete
+            await new Promise(resolve => setTimeout(resolve, 100));
+            console.log('Detected changes in recipes.json');
+            await seedDatabase();
+        } catch (error) {
+            console.error('Error syncing file changes to MongoDB:', error);
+        }
+    }
+});
