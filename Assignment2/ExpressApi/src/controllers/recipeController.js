@@ -49,3 +49,25 @@ exports.getRecipeById = async (req, res) => {
       });
   }
 };
+
+// Create new recipe
+exports.createRecipe = async (req, res) => {
+    try {
+        const newRecipe = await Recipe.create(req.body);
+        
+        // Update JSON file with all recipes
+        await updateRecipesFile();
+
+        res.status(201).json({
+            status: 'success',
+            message: 'Recipe added successfully',
+            data: newRecipe
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'error',
+            message: 'Error creating recipe',
+            error: error.message
+        });
+    }
+};
