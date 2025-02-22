@@ -68,3 +68,23 @@ async function syncToMongoDB(recipes) {
         console.error('Error syncing to MongoDB:', error);
     }
 }
+
+// Update recipes JSON file with current MongoDB data
+async function updateRecipesFile() {
+    try {
+        // Get all recipes from MongoDB
+        const recipes = await Recipe.find();
+        
+        // Write recipes to JSON file
+        await writeRecipesFile(recipes);
+        console.log('Recipes JSON file updated successfully');
+    } catch (error) {
+        console.error('Error updating recipes file:', error);
+    }
+}
+
+module.exports = {
+    readRecipesFile,
+    writeRecipesFile,
+    updateRecipesFile
+};
