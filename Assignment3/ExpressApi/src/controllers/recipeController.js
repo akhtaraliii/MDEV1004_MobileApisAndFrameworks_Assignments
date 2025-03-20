@@ -89,3 +89,25 @@ exports.updateRecipe = async (req, res) => {
         });
     }
 };
+
+exports.deleteRecipe = async (req, res) => {
+    try {
+        const recipe = await Recipe.findByIdAndDelete(req.params.id);
+        if (!recipe) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Recipe not found'
+            });
+        }
+        await updateRecipesFile();
+        res.status(200).json({
+            status: 'success',
+            message: 'Recipe deleted successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: 'Error deleting recipe'
+        });
+    }
+};
