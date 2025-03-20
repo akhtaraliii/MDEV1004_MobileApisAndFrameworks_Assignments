@@ -47,3 +47,19 @@ exports.getRecipeById = async (req, res) => {
         });
     }
 };
+
+exports.createRecipe = async (req, res) => {
+    try {
+        const newRecipe = await Recipe.create(req.body);
+        await updateRecipesFile();
+        res.status(201).json({
+            status: 'success',
+            data: newRecipe
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'error',
+            message: 'Error creating recipe'
+        });
+    }
+};
