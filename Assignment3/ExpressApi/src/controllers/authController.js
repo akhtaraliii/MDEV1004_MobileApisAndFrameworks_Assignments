@@ -24,3 +24,26 @@ exports.registerUser = async(req,res)=>{
         res.status(500).json({message:'Error registering user'});
     }
 };
+
+exports.loginUser = async(req,res)=>{
+    const {email, password} = req.body;
+    try {
+        const user = await User.findOne({email});
+        if(!user || !(await user.isValidPassword(password))){
+            return res.status(401).json({message:'Invalid credentials'});
+        }
+        
+        const token = jwt.sign(
+            { userId: user._id, email: user.email },
+            process.env.TOKEN_KEY,
+            { expiresIn: '2h' }
+        );
+        
+        res.status(200).json({
+            message:'Login successful',
+            token: token
+        });
+    } catch(error){
+        res.status(500).json({message:'Error during login'});
+    }
+};
