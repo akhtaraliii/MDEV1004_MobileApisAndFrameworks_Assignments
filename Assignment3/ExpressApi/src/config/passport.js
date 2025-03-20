@@ -25,3 +25,26 @@ passport.use(new LocalStrategy({
         return done(error);
     }
 }));
+
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
+const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromExtractors([
+        ExtractJwt.fromHeader('x-access-token'),
+        ExtractJwt.fromAuthHeaderAsBearerToken()
+    ]),
+    secretOrKey: process.env.TOKEN_KEY
+};
+
+passport.use(new JwtStrategy(jwtOptions, async (jwt_payload, done) => {
+    try {
+        const user = await User.findById(jwt_payload.userId);
+        if (user) {
+            return done(null, user);
+        }
+        return done(null, false);
+    } catch (error) {
+        return done(error, false);
+    }
+}));
