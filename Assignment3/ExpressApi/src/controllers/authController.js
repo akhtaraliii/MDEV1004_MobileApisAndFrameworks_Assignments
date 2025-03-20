@@ -47,3 +47,29 @@ exports.loginUser = async(req,res)=>{
         res.status(500).json({message:'Error during login'});
     }
 };
+
+exports.dashboard = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({
+            status: 'success',
+            data: {
+                user: {
+                    username: user.username,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email
+                }
+            }
+        });
+    } catch (error) {
+        res.status(500).json({message:'Error accessing dashboard'});
+    }
+};
+
+exports.logoutUser = (req, res) => {
+    res.status(200).json({ message: 'Logged out successfully' });
+};
