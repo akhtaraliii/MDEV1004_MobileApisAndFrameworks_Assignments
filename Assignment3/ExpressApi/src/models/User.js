@@ -12,24 +12,20 @@ const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
     username:{type:String,required:true,unique:true},
+    firstName:{type:String,required:true},
+    lastName:{type:String,required:true},
     email:{type:String,required:true,unique:true},
     password:{type:String,required:true}
-})
+});
 
-// Encrypt the password before saving the user
+// Add password hashing
 UserSchema.pre('save', async function(next) {
-    // Only hash the password if it has been modified (or is new)
     if (!this.isModified('password')) return next();
-    
-    // Generate a salt with a factor of 10
     const salt = await bcrypt.genSalt(10);
-    
-    // Hash the password using the generated salt
     this.password = await bcrypt.hash(this.password, salt);
     next();
 });
 
-//Method to validate password
 UserSchema.methods.isValidPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
