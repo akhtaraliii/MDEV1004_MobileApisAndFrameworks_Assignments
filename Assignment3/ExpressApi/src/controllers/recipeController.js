@@ -63,3 +63,29 @@ exports.createRecipe = async (req, res) => {
         });
     }
 };
+
+exports.updateRecipe = async (req, res) => {
+    try {
+        const recipe = await Recipe.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
+        if (!recipe) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Recipe not found'
+            });
+        }
+        await updateRecipesFile();
+        res.status(200).json({
+            status: 'success',
+            data: recipe
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: 'error',
+            message: 'Error updating recipe'
+        });
+    }
+};
