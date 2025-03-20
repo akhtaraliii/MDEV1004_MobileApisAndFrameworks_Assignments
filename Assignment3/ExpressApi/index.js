@@ -12,6 +12,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const passport = require('./src/config/passport');
 const recipeRoutes = require('./src/routes/recipeRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const Recipe = require('./src/models/Recipe');
@@ -26,6 +27,21 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'src/public')));
+
+// Initialize Passport
+app.use(passport.initialize());
+
+// CORS middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        return res.status(200).json({});
+    }
+    next();
+});
 
 // Routes
 app.use('/recipes', recipeRoutes);
@@ -81,9 +97,10 @@ mongoose.connect(process.env.MONGO_URI, {
       console.log(`Server is running on http://localhost:${PORT}\n`);
       console.log('API Endpoints:');
       console.log('  Auth:');
-      console.log('   POST /auth/register - Register new user');
-      console.log('   POST /auth/login    - Login user');
-      console.log('   POST /auth/logout   - Logout user\n');
+      console.log('   POST /auth/register  - Register new user');
+      console.log('   POST /auth/login     - Login user');
+      console.log('   POST /auth/logout    - Logout user');
+      console.log('   GET  /auth/dashboard - Get user dashboard (Protected)\n');
       console.log('  Recipes:');
       console.log('   GET    /recipes     - Get all recipes');
       console.log('   GET    /recipes/:id - Get recipe by ID');
