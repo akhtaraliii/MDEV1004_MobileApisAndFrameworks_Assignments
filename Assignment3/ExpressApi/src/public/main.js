@@ -1,3 +1,11 @@
+/**
+ * File name : recipeController.js
+ * Student: Akhtar Ali
+ * StudentID: 200568437
+ * Student: Harshdeep Singh
+ * StudentID: 200612779
+ * Date: 20 March 2025
+ */
 // DOM Elements
 const recipesList = document.getElementById('recipesList');
 const recipeModal = new bootstrap.Modal(document.getElementById('recipeModal'));
