@@ -12,6 +12,9 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
+/**
+ * Adapter for displaying recipe items in a RecyclerView
+ */
 class RecipeAdapter(private var recipes: List<Recipe>) :
     RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
@@ -19,6 +22,7 @@ class RecipeAdapter(private var recipes: List<Recipe>) :
         private const val TAG = "RecipeAdapter"
     }
 
+    // ViewHolder for caching recipe item views
     class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.findViewById(R.id.recipeImageView)
         val nameTextView: TextView = itemView.findViewById(R.id.recipeNameTextView)
@@ -107,6 +111,7 @@ class RecipeAdapter(private var recipes: List<Recipe>) :
         return recipes.size
     }
 
+    // Updates the recipe list and refreshes the view
     fun updateRecipes(newRecipes: List<Recipe>) {
         Log.d(TAG, "Updating recipes. New count: ${newRecipes.size}")
         recipes = newRecipes

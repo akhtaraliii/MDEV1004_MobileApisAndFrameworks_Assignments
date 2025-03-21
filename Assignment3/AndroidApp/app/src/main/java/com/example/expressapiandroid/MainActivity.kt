@@ -15,6 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlinx.coroutines.*
 
+/**
+ * Main activity that displays a list of recipes fetched from the API,with auto-refresh functionality
+ */
 class MainActivity : AppCompatActivity() {
     private var refreshJob: Job? = null
     private lateinit var recyclerView: RecyclerView
@@ -63,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         startAutoRefresh()
     }
 
+    // Fetches recipes from the API and updates the RecyclerView
     private fun fetchRecipes() {
         Log.d(TAG, "Fetching recipes...")
         apiService.getRecipes().enqueue(object : Callback<RecipeResponse> {
@@ -107,6 +111,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    // Starts auto-refresh coroutine that fetches recipes every 5 seconds
     private fun startAutoRefresh() {
         refreshJob?.cancel() // Cancel any existing job
         refreshJob = CoroutineScope(Dispatchers.Main).launch {
@@ -122,6 +127,7 @@ class MainActivity : AppCompatActivity() {
         refreshJob?.cancel() // Cancel the refresh job when activity is destroyed
     }
 
+    // Displays error message to user via Toast
     private fun showError(message: String) {
         Log.e(TAG, "Error: $message")
         runOnUiThread {
