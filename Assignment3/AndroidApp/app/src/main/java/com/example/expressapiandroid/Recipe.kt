@@ -1,5 +1,8 @@
 package com.example.expressapiandroid
 
+/**
+ * Data class representing a recipe with its essential properties
+ */
 data class Recipe(
     val recipeName: String,
     val ingredients: List<String>,
