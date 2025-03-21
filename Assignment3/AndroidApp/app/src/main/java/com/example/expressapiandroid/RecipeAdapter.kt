@@ -38,43 +38,58 @@ class RecipeAdapter(private var recipes: List<Recipe>) :
         Log.d(TAG, "Binding recipe at position $position: ${recipe.recipeName}")
         
         // Load recipe image
-        val imageUrl = if (recipe.photoLink.contains("images.app.goo.gl")) {
-            "https://source.unsplash.com/featured/?${recipe.recipeName.replace(" ", "+")}+food"
-        } else {
-            recipe.photoLink
-        }
+        val imageUrl = recipe.photoLink.takeIf { 
+            it.isNotBlank() && !it.contains("images.app.goo.gl") 
+        } ?: "https://source.unsplash.com/featured/?${recipe.recipeName.replace(" ", "+")}+food"
         
         Log.d(TAG, "Loading image from URL: $imageUrl")
         
-        Glide.with(holder.imageView)
-            .load(imageUrl)
-            .placeholder(R.drawable.placeholder_image)
-            .error(R.drawable.placeholder_image)
-            .centerCrop()
-            .listener(object : RequestListener<android.graphics.drawable.Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<android.graphics.drawable.Drawable>,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.e(TAG, "Failed to load image for ${recipe.recipeName}: ${e?.message}")
-                    return false
-                }
+        try {
+            Glide.with(holder.imageView.context)
+                .load(imageUrl)
+                .timeout(30000) // 30 seconds timeout
+                .placeholder(R.drawable.placeholder_image)
+                .error(R.drawable.placeholder_image)
+                .centerCrop()
+                .listener(object : RequestListener<android.graphics.drawable.Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<android.graphics.drawable.Drawable>,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Log.e(TAG, "Failed to load image for ${recipe.recipeName} from $imageUrl: ${e?.message}")
+                        // Try loading from Unsplash as fallback if the original URL failed
+                        if (!imageUrl.contains("unsplash")) {
+                            val fallbackUrl = "https://source.unsplash.com/featured/?${recipe.recipeName.replace(" ", "+")}+food"
+                            Log.d(TAG, "Trying fallback URL: $fallbackUrl")
+                            Glide.with(holder.imageView.context)
+                                .load(fallbackUrl)
+                                .timeout(30000)
+                                .placeholder(R.drawable.placeholder_image)
+                                .error(android.R.drawable.ic_menu_gallery)
+                                .centerCrop()
+                                .into(holder.imageView)
+                        }
+                        return false
+                    }
 
-                override fun onResourceReady(
-                    resource: android.graphics.drawable.Drawable,
-                    model: Any,
-                    target: Target<android.graphics.drawable.Drawable>,
-                    dataSource: com.bumptech.glide.load.DataSource,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.d(TAG, "Successfully loaded image for ${recipe.recipeName}")
-                    return false
-                }
-            })
-            .error(android.R.drawable.ic_menu_gallery) // Default error image
-            .into(holder.imageView)
+                    override fun onResourceReady(
+                        resource: android.graphics.drawable.Drawable,
+                        model: Any,
+                        target: Target<android.graphics.drawable.Drawable>,
+                        dataSource: com.bumptech.glide.load.DataSource,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        Log.d(TAG, "Successfully loaded image for ${recipe.recipeName} from $imageUrl")
+                        return false
+                    }
+                })
+                .into(holder.imageView)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error loading image for ${recipe.recipeName}", e)
+            holder.imageView.setImageResource(android.R.drawable.ic_menu_gallery)
+        }
 
         try {
             // Set recipe details

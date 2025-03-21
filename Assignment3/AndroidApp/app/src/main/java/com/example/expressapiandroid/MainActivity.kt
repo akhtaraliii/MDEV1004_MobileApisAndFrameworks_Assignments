@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        startAutoRefresh()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -47,7 +46,11 @@ class MainActivity : AppCompatActivity() {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://10.0.2.2:3000/") // Android emulator localhost
-            .client(client)
+            .client(client.newBuilder()
+                .connectTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                .writeTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+                .build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -55,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         // Fetch recipes
         fetchRecipes()
+        
+        // Start auto-refresh
+        startAutoRefresh()
     }
 
     private fun fetchRecipes() {
@@ -64,27 +70,39 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Response received: ${response.code()}")
                 if (response.isSuccessful) {
                     response.body()?.let { recipeResponse ->
-                        Log.d(TAG, "Recipes received: ${recipeResponse.results} items")
+                        Log.d(TAG, "Recipes received: ${recipeResponse.data.size} items")
                         runOnUiThread {
                             adapter.updateRecipes(recipeResponse.data)
                             if (recipeResponse.data.isEmpty()) {
-                                showError("No recipes found")
+                                showError("No recipes found. Please make sure your API server is running.")
                             }
                         }
                     } ?: run {
                         Log.e(TAG, "Response body is null")
-                        showError("Error: Empty response")
+                        showError("Error: Server returned empty response. Please check your API server.")
                     }
                 } else {
                     val errorBody = response.errorBody()?.string()
                     Log.e(TAG, "Error response: ${response.code()}, Body: $errorBody")
-                    showError("Error: ${response.code()} - $errorBody")
+                    val errorMessage = when(response.code()) {
+                        404 -> "API endpoint not found. Please check if the server is running on the correct port."
+                        500 -> "Server error. Please check your API server logs."
+                        else -> "Error ${response.code()}: ${errorBody ?: "Unknown error"}"
+                    }
+                    showError(errorMessage)
                 }
             }
 
             override fun onFailure(call: Call<RecipeResponse>, t: Throwable) {
                 Log.e(TAG, "Network error", t)
-                showError("Network error: ${t.message}")
+                val errorMessage = when {
+                    t.message?.contains("Failed to connect") == true -> "Could not connect to the server. Please ensure your API is running on port 3000."
+                    t.message?.contains("timeout") == true -> "Connection timed out. Please check your network connection."
+                    else -> "Network error: ${t.message}"
+                }
+                runOnUiThread {
+                    showError(errorMessage)
+                }
             }
         })
     }
