@@ -100,7 +100,7 @@ mongoose.connect(process.env.MONGO_URI, {
       console.log('   POST /auth/register  - Register new user');
       console.log('   POST /auth/login     - Login user');
       console.log('   POST /auth/logout    - Logout user');
-      console.log('   GET  /auth/dashboard - Get user dashboard (Protected)\n');
+      console.log('   GET  /auth/dashboard - Get user dashboard \n');
       console.log('  Recipes:');
       console.log('   GET    /recipes     - Get all recipes');
       console.log('   GET    /recipes/:id - Get recipe by ID');
