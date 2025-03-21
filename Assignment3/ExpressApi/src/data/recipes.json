@@ -426,5 +426,23 @@
     "photoLink": "https://images.app.goo.gl/aTSEoNbZtvnTpH4z8",
     "averageRating": 4.7,
     "__v": 0
+  },
+  {
+    "_id": "67dcd1a218411d62cc149f01",
+    "recipeName": "Checkob",
+    "ingredients": [
+      "spaghetti",
+      "ground beef",
+      "tomato sauce",
+      "garlic",
+      "onion"
+    ],
+    "cookingTime": "45 minutes",
+    "difficulty": "Medium",
+    "cuisine": "Italian",
+    "description": "A classic Italian pasta dish...",
+    "photoLink": "https://images.app.goo.gl/PuY26PxJjipG3TRJA",
+    "averageRating": 4.5,
+    "__v": 0
   }
 ]

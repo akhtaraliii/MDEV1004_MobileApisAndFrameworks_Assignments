@@ -38,8 +38,18 @@ class RecipeAdapter(private var recipes: List<Recipe>) :
         Log.d(TAG, "Binding recipe at position $position: ${recipe.recipeName}")
         
         // Load recipe image
+        val imageUrl = if (recipe.photoLink.contains("images.app.goo.gl")) {
+            "https://source.unsplash.com/featured/?${recipe.recipeName.replace(" ", "+")}+food"
+        } else {
+            recipe.photoLink
+        }
+        
+        Log.d(TAG, "Loading image from URL: $imageUrl")
+        
         Glide.with(holder.imageView)
-            .load(recipe.photoLink)
+            .load(imageUrl)
+            .placeholder(R.drawable.placeholder_image)
+            .error(R.drawable.placeholder_image)
             .centerCrop()
             .listener(object : RequestListener<android.graphics.drawable.Drawable> {
                 override fun onLoadFailed(
