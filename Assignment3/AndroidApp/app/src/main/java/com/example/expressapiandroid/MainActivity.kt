@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Response received: ${response.code()}")
                 if (response.isSuccessful) {
                     response.body()?.let { recipeResponse ->
-                        Log.d(TAG, "Recipes received: ${recipeResponse.results}")
+                        Log.d(TAG, "Recipes received: ${recipeResponse.results} items")
                         runOnUiThread {
                             adapter.updateRecipes(recipeResponse.data)
                             if (recipeResponse.data.isEmpty()) {
