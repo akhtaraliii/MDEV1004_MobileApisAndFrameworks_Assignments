@@ -85,3 +85,20 @@ function displayPageAnalytics(data) {
         </div>
     `).join('');
 }
+
+// Display button analytics
+function displayButtonAnalytics(data) {
+    const container = document.getElementById('buttonClicks');
+    container.innerHTML = data.map(item => `
+        <div class="analytics-item">
+            <strong>Button:</strong> ${item.buttonId}<br>
+            <strong>Clicked by:</strong> ${item.username || 'Anonymous'}<br>
+            <strong>Time:</strong> ${new Date(item.timestamp).toLocaleString()}
+        </div>
+    `).join('');
+}
+
+// Initial fetch
+fetchAnalytics();
+// Refresh every 30 seconds
+setInterval(fetchAnalytics, 30000);
