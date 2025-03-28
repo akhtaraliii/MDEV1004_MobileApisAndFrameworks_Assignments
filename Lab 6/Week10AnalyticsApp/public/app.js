@@ -34,7 +34,7 @@ document.getElementById('aboutBtn').addEventListener('click', async () => {
 
 document.getElementById('refreshBtn').addEventListener('click', async () => {
     await trackButtonClick('refreshBtn');
-    fetchAnalytics(); // Refresh the analytics display
+    window.location.reload(); // Refresh the entire page
 });
 
 // Track button clicks
