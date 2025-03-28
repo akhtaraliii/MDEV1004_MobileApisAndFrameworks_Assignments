@@ -36,3 +36,25 @@ document.getElementById('refreshBtn').addEventListener('click', async () => {
     await trackButtonClick('refreshBtn');
     fetchAnalytics(); // Refresh the analytics display
 });
+
+// Track button clicks
+async function trackButtonClick(buttonId) {
+    try {
+        const response = await fetch('/api/track-button', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                buttonId,
+                username,
+                timestamp: new Date()
+            })
+        });
+        if (response.ok) {
+            fetchAnalytics();
+        }
+    } catch (error) {
+        console.error('Error tracking button click:', error);
+    }
+}
