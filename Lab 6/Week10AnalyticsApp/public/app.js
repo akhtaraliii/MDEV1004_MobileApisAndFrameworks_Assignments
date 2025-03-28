@@ -58,3 +58,30 @@ async function trackButtonClick(buttonId) {
         console.error('Error tracking button click:', error);
     }
 }
+
+// Fetch analytics data
+async function fetchAnalytics() {
+    try {
+        const [pageData, buttonData] = await Promise.all([
+            fetch('/analytics').then(res => res.json()),
+            fetch('/api/button-analytics').then(res => res.json())
+        ]);
+
+        displayPageAnalytics(pageData);
+        displayButtonAnalytics(buttonData);
+    } catch (error) {
+        console.error('Error fetching analytics:', error);
+    }
+}
+
+// Display page analytics
+function displayPageAnalytics(data) {
+    const container = document.getElementById('pageHits');
+    container.innerHTML = data.map(item => `
+        <div class="analytics-item">
+            <strong>Endpoint:</strong> ${item.endpoint}<br>
+            <strong>Total Hits:</strong> ${item.hits}<br>
+            <strong>Last Visit:</strong> ${new Date(item.timestamps[item.timestamps.length - 1]).toLocaleString()}
+        </div>
+    `).join('');
+}
