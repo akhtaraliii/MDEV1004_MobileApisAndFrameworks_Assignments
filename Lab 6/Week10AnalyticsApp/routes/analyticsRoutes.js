@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const { trackAnalytics, getAnalytics } = require('../controllers/analyticsController');
+const { trackAnalytics, getAnalytics, trackButtonClick, getButtonAnalytics } = require('../controllers/analyticsController');
 
 // Google Analytics 4 Measurement ID & API Secret
 const measurement_id = 'G-3N37LZHLB8'; // Replace with your GA4 Measurement ID
@@ -35,6 +35,10 @@ const sendToGoogleAnalytics = async (eventName, params = {}) => {
     }
 };
 
+// Serve static files
+router.use(express.static('public'));
+router.use(express.json());
+
 // Track analytics for page visits and log Google Analytics events
 router.get('/hello', trackAnalytics, async (req, res) => {
     await sendToGoogleAnalytics('page_view', { page_location: '/hello' });
@@ -48,5 +52,9 @@ router.get('/about', trackAnalytics, async (req, res) => {
 
 // Route to view analytics data from MongoDB
 router.get('/analytics', getAnalytics);
+
+// Button analytics routes
+router.post('/api/track-button', trackButtonClick);
+router.get('/api/button-analytics', getButtonAnalytics);
 
 module.exports = router;
