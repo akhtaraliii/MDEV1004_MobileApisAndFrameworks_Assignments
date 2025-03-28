@@ -1,0 +1,33 @@
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.analytics-data, .button-analytics {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#pageHits, #buttonClicks {
+    margin-top: 15px;
+}
+
+.timestamp {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.analytics-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.analytics-item:last-child {
+    border-bottom: none;
+}
