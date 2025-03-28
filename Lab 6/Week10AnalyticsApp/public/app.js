@@ -22,3 +22,17 @@ async function trackPageVisit(path) {
         console.error('Error tracking page visit:', error);
     }
 }
+
+// Add click handlers to buttons
+document.getElementById('homeBtn').addEventListener('click', async () => {
+    await trackPageVisit('/hello');
+});
+
+document.getElementById('aboutBtn').addEventListener('click', async () => {
+    await trackPageVisit('/about');
+});
+
+document.getElementById('refreshBtn').addEventListener('click', async () => {
+    await trackButtonClick('refreshBtn');
+    fetchAnalytics(); // Refresh the analytics display
+});
