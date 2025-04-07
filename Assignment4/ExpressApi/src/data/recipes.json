@@ -429,7 +429,7 @@
   },
   {
     "_id": "67dcd1a218411d62cc149f01",
-    "recipeName": "Checkob",
+    "recipeName": "Check",
     "ingredients": [
       "spaghetti",
       "ground beef",
@@ -439,7 +439,7 @@
     ],
     "cookingTime": "45 minutes",
     "difficulty": "Medium",
-    "cuisine": "Italian",
+    "cuisine": "Indian",
     "description": "A classic Italian pasta dish...",
     "photoLink": "https://images.app.goo.gl/PuY26PxJjipG3TRJA",
     "averageRating": 4.5,
